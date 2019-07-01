@@ -1,3 +1,9 @@
 FROM zuul/zuul-executor
-RUN pip install ara==0.16.5 --no-cache-dir
+RUN apt update \
+  && apt install gcc \
+  && pip install ara==0.16.5 --no-cache-dir \
+  && apt purge gcc \
+  && apt autoremove \
+  && apt clean \
+  && rm -rf /var/lib/apt/lists/*
 ENV ANSIBLE_CALLBACK_PLUGINS=/usr/local/lib/python2.7/dist-packages/ara/plugins/callbacks
