@@ -6,3 +6,5 @@ RUN apt update \
   && apt autoremove -y \
   && apt clean -y \
   && rm -rf /var/lib/apt/lists/*
+ENV ANSIBLE_CALLBACK_PLUGINS=/usr/local/lib/python3.7/site-packages/ara/plugins/callbacks
+ENV ANSIBLE_ACTION_PLUGINS=/usr/local/lib/python3.7/site-packages/ara/plugins/actions
